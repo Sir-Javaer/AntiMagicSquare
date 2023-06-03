@@ -1,7 +1,8 @@
 const { performance } = require('perf_hooks'); // import a preinstalled module
 
 function antiMagicSquareBruteForceProofAlgorithm(base) {
-    decimalToBase = (num, base) => { // function for converting decimal to bases 1 - 9
+    decimalToBase = (num, base) => {
+        // function for converting decimal to bases 1 - 9
         let foo = '';
         if (num == 0) return '0'; // algorithm breaks if num is 0
         while (num > 0) {
@@ -12,17 +13,20 @@ function antiMagicSquareBruteForceProofAlgorithm(base) {
         return foo.toString();
     };
 
-    baseToDecimal = (num, base) => { // convert bases 1 - 9 to decimal
+    baseToDecimal = (num, base) => {
+        // convert bases 1 - 9 to decimal
         let decimal = 0; // result
         let bits = 1; // individual bits of the string
-        for (let i = 0; i < num.toString().length; i++) { // iterate through every bit
+        for (let i = 0; i < num.toString().length; i++) {
+            // iterate through every bit
             let cNum = num.toString()[num.toString().length - i - 1]; // select current bit
             decimal += bits * cNum; // calculate decimal for the next bit
             bits *= base; // multiply bits for the next generation
         }
         return decimal.toString();
     };
-    const validateSums = (grid) => { // function for sorting ASCII characters within a string
+    const validateSums = (grid) => {
+        // function for sorting ASCII characters within a string
         const sortString = (string) => {
             return string.split('').sort().join('');
         };
@@ -42,13 +46,15 @@ function antiMagicSquareBruteForceProofAlgorithm(base) {
     let foo = ''; // temporary variable
     let numOfSolutions = 0;
     let solved = false;
-    for (let i = 0; i < 9; i++) { // add 9 bits together in a string
+    for (let i = 0; i < 9; i++) {
+        // add 9 bits together in a string
         foo += (base - 1).toString();
     }
     const combinations =
         Number.parseInt(baseToDecimal(Number.parseInt(foo), base)) + 1; // convert bits to base 10 to find maximum number of combinations. base^9 also works
     const digits = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-    for (let i = 0; i < combinations; i++) { // iterate through all combinations
+    for (let i = 0; i < combinations; i++) {
+        // iterate through all combinations
         let string = decimalToBase(i, base); // generate a base string for the index
         let grid = ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A'];
         for (let j = 0; j < 9; j++) {
@@ -77,13 +83,16 @@ function antiMagicSquareBruteForceProofAlgorithm(base) {
             );
         }
     }
-    if (solved) { // check if this base is solvable
+    if (solved) {
+        // check if this base is solvable
         console.log(numOfSolutions + ' solutions found \n'); // log the number of solutions found
         return combinations; // return some statistics
     }
     console.log('\n\nNo possible solution found\n'); // default to no solutions found
+    return combinations;
 }
-function solveAntiMagicSquareBruteForceProofAlgorithm(base) { // wrapper function
+function solveAntiMagicSquareBruteForceProofAlgorithm(base) {
+    // wrapper function
     console.clear();
     let a = performance.now(); // get the current time in ms
     combination = antiMagicSquareBruteForceProofAlgorithm(base);
@@ -98,4 +107,4 @@ function solveAntiMagicSquareBruteForceProofAlgorithm(base) { // wrapper functio
 }
 
 //*----------------- Entry Function -----------------*\\
-solveAntiMagicSquareBruteForceProofAlgorithm(4);
+solveAntiMagicSquareBruteForceProofAlgorithm(3);
