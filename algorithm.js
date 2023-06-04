@@ -35,11 +35,11 @@ function antiMagicSquareBruteForceProofAlgorithm(base) {
         sums.push(sortString(grid[0] + grid[1] + grid[2])); // h1
         sums.push(sortString(grid[3] + grid[4] + grid[5])); // h2
         sums.push(sortString(grid[6] + grid[7] + grid[8])); // h3
-        sums.push(sortString(grid[0] + grid[3] + grid[6])); // h4
-        sums.push(sortString(grid[1] + grid[4] + grid[7])); // h5
-        sums.push(sortString(grid[2] + grid[5] + grid[8])); // h6
-        sums.push(sortString(grid[0] + grid[4] + grid[8])); // h7
-        sums.push(sortString(grid[2] + grid[4] + grid[6])); // h8
+        sums.push(sortString(grid[0] + grid[3] + grid[6])); // v1
+        sums.push(sortString(grid[1] + grid[4] + grid[7])); // v2
+        sums.push(sortString(grid[2] + grid[5] + grid[8])); // v3
+        sums.push(sortString(grid[0] + grid[4] + grid[8])); // d1
+        sums.push(sortString(grid[2] + grid[4] + grid[6])); // d2
         if (new Set(sums).size == sums.length) return true; // check for any duplicate sums
         return false;
     };
@@ -107,4 +107,4 @@ function solveAntiMagicSquareBruteForceProofAlgorithm(base) {
 }
 
 //*----------------- Entry Function -----------------*\\
-solveAntiMagicSquareBruteForceProofAlgorithm(3);
+solveAntiMagicSquareBruteForceProofAlgorithm(6);
